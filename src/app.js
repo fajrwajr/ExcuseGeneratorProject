@@ -1,31 +1,40 @@
-window.onload = () => {
-  document.querySelector("#excuse").innerHTML = excuseGenerator();
-};
-
-let excuseGenerator = () => {
-  let who = ["The dog", "My grandma", "His turtle", "My bird"];
-  let action = ["ate", "peed", "crushed", "broke"];
-  let what = ["my homework", "the keys", "the car"];
-  let when = [
+let fajrsObjectWithArrays = {
+  who: ["The dog", "My grandma", "His turtle", "My bird"],
+  action: ["ate", "peed", "crushed", "broke"],
+  what: ["my homework", "the keys", "the car"],
+  when: [
     "before the class",
     "right on time",
     "when I finished",
     "during my lunch",
     "while I was praying"
-  ];
-
-  let whoIndex = Math.floor(Math.random() * 4);
-  let actInde = Math.floor(Math.random() * 4);
-  let whatIndex = Math.floor(Math.random() * 3);
-  let whenIndex = Math.floor(Math.random() * 5);
-
-  return (
-    who[whoIndex] +
-    " " +
-    action[actInde] +
-    " " +
-    what[whatIndex] +
-    " " +
-    when[whenIndex]
-  );
+  ]
 };
+
+function excuseGenerator() {
+  return (
+    fajrsObjectWithArrays.who[
+      Math.floor(Math.random() * fajrsObjectWithArrays.who.length)
+    ] +
+    " " +
+    fajrsObjectWithArrays.action[
+      Math.floor(Math.random() * fajrsObjectWithArrays.action.length)
+    ] +
+    " " +
+    fajrsObjectWithArrays.what[
+      Math.floor(Math.random() * fajrsObjectWithArrays.what.length)
+    ] +
+    " " +
+    fajrsObjectWithArrays.when[
+      Math.floor(Math.random() * fajrsObjectWithArrays.when.length)
+    ]
+  );
+}
+
+function addExcuse() {
+  document.querySelector("#excuse").innerHTML = excuseGenerator();
+  fajrsObjectWithArrays.what.push(document.querySelector("#inputText").value);
+  console.log(fajrsObjectWithArrays.what);
+}
+
+document.querySelector("#addButton").addEventListener("click", addExcuse);
