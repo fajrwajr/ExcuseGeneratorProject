@@ -32,9 +32,23 @@ function excuseGenerator() {
 }
 
 function addExcuse() {
+  let inputValue = document.getElementById("inputText").value;
+  let option = document.getElementById("selectExcuse").value;
+  switch (option) {
+    case "Who":
+      fajrsObjectWithArrays.who.push(inputValue);
+      break;
+    case "Action":
+      fajrsObjectWithArrays.action.push(inputValue);
+      break;
+    case "What":
+      fajrsObjectWithArrays.what.push(inputValue);
+      break;
+    case "When":
+      fajrsObjectWithArrays.when.push(inputValue);
+      break;
+  }
   document.querySelector("#excuse").innerHTML = excuseGenerator();
-  fajrsObjectWithArrays.what.push(document.querySelector("#inputText").value);
-  console.log(fajrsObjectWithArrays.what);
 }
 
 document.querySelector("#addButton").addEventListener("click", addExcuse);
